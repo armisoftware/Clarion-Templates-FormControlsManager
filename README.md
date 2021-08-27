@@ -42,6 +42,8 @@ Al pulsar la tecla elegida, CTRLF5 por defecto aparecerá un menu popup para ele
 - Regenerar controles por defecto
   Esta opción es para cuando se hace alguna modificación de la ventana original y el control nuevo no aparece en la lista.
   
+Como ejemplo les dejo el ejemplo School que viene con Clarion, el template esta agregado en el FormStudents.
+
 Es todo, espero les sirva.  
 
 
