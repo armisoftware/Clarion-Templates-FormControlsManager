@@ -38,8 +38,10 @@ https://github.com/armisoftware/Clarion-Templates-FormControlsManager/blob/main/
   Esta opción dibuja un box azul en la esquina superior izquierda de cada control.
   Haciendo click en el box se abre la ventana de edición de las propiedades de ese control.
   Se pueden ver los valores por defecto, o sea los programados en la ventana original y modificarlos.
+  https://github.com/armisoftware/Clarion-Templates-FormControlsManager/blob/main/2.png
 - Editar Todos los Controles
   Esta opción es similar solo que se abre un Browse para modificar cualquier control con edit in place.
+  https://github.com/armisoftware/Clarion-Templates-FormControlsManager/blob/main/3.png
 - Regenerar controles por defecto
   Esta opción es para cuando se hace alguna modificación de la ventana original y el control nuevo no aparece en la lista.
   
