@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dictionary Name="ARMi_FormControlManager" Version="1" StructureChecked="1" DctxFormat="4">
+	<DictionaryVersion Version="1" Description="Initial version"/>
+	<Table Guid="{06690caa-847f-454f-9394-5898a8a0da89}" Name="PAR_CTRLS" Prefix="PCT" Driver="MSSQL" DriverOption="!Glo:DriverOptions" Owner="!GLO:EMPbase" Path="PAR_CTRLS" Create="true" Thread="true">
+		<Audit CreateUser="Administrator" CreateDate="11 FEB 2014" CreateTime="10:35:29PM" CreateVersionNumber="1" ModifiedUser="Administrator" ModifiedDate="26 AUG 2021" ModifiedTime=" 6:18:00PM" ModifiedVersionNumber="1"/>
+		<Option Property="Version" PropertyType="1" PropertyValue="103"/>
+		<Field Guid="{36b43050-10f5-4679-8963-000e72c1362d}" Name="ID" DataType="LONG" Size="4" ScreenPicture="@n-14" ScreenPrompt="ID:" ReportHeading="ID" Justification="RIGHT" Offset="1" ReportControl=" STRING(@n-14),USE(PCT:ID),RIGHT(1)">
+			<WindowControl>
+				<Line Text=" PROMPT(&apos;ID:&apos;),USE(?PCT:ID:Prompt)"/>
+				<Line Text=" ENTRY(@n-14),USE(PCT:ID),RIGHT(1)"/>
+			</WindowControl>
+			<Audit CreateUser="Administrator" CreateDate="26 AUG 2021" CreateTime=" 5:21:03PM" CreateVersionNumber="1" ModifiedUser="Administrator" ModifiedDate="26 AUG 2021" ModifiedTime=" 5:21:03PM" ModifiedVersionNumber="1"/>
+			<Validity Check="NOCHECKS"/>
+		</Field>
+		<Field Guid="{1ab8b284-a04c-4f2d-98b4-8865039a65ec}" Name="USU_ID" DataType="LONG" Size="4" ScreenPicture="@n-14" ScreenPrompt="USU ID:" ReportHeading="USU ID" Justification="RIGHT" Offset="1" ReportControl=" STRING(@n-14),USE(PCT:USU_ID),RIGHT(1)">
+			<WindowControl>
+				<Line Text=" PROMPT(&apos;USU ID:&apos;),USE(?PCT:USU_ID:Prompt)"/>
+				<Line Text=" ENTRY(@n-14),USE(PCT:USU_ID),RIGHT(1)"/>
+			</WindowControl>
+			<Audit CreateUser="Administrator" CreateDate="26 AUG 2021" CreateTime=" 5:21:03PM" CreateVersionNumber="1" ModifiedUser="Administrator" ModifiedDate="26 AUG 2021" ModifiedTime=" 5:21:03PM" ModifiedVersionNumber="1"/>
+			<Validity Check="NOCHECKS"/>
+		</Field>
+		<Field Guid="{560403ef-134d-4bd1-93bd-589f0fdc9792}" Name="PROCEDIMIENTO" DataType="CSTRING" Size="101" ScreenPicture="@s100" ScreenPrompt="PROCEDIMIENTO:" ReportHeading="PROCEDIMIENTO" ReportControl=" STRING(@s100),USE(PCT:PROCEDIMIENTO)">
+			<WindowControl>
+				<Line Text=" PROMPT(&apos;PROCEDIMIENTO:&apos;),USE(?PCT:PROCEDIMIENTO:Prompt)"/>
+				<Line Text=" ENTRY(@s100),USE(PCT:PROCEDIMIENTO)"/>
+			</WindowControl>
+			<Audit CreateUser="Administrator" CreateDate="26 AUG 2021" CreateTime=" 5:21:03PM" CreateVersionNumber="1" ModifiedUser="Administrator" ModifiedDate="26 AUG 2021" ModifiedTime=" 5:21:03PM" ModifiedVersionNumber="1"/>
+			<Validity Check="NOCHECKS"/>
+		</Field>
+		<Field Guid="{e6729f59-c902-4e2d-ad58-90a0c1751f83}" Name="FEQ" DataType="LONG" Size="4" ScreenPicture="@n-14" ScreenPrompt="FEQ:" ReportHeading="FEQ" Justification="RIGHT" Offset="1" ReportControl=" STRING(@n-14),USE(PCT:FEQ),RIGHT(1)">
+			<WindowControl>
+				<Line Text=" PROMPT(&apos;FEQ:&apos;),USE(?PCT:FEQ:Prompt)"/>
+				<Line Text=" ENTRY(@n-14),USE(PCT:FEQ),RIGHT(1)"/>
+			</WindowControl>
+			<Audit CreateUser="Administrator" CreateDate="26 AUG 2021" CreateTime=" 5:21:03PM" CreateVersionNumber="1" ModifiedUser="Administrator" ModifiedDate="26 AUG 2021" ModifiedTime=" 5:21:03PM" ModifiedVersionNumber="1"/>
+			<Validity Check="NOCHECKS"/>
+		</Field>
+		<Field Guid="{f3e91f01-9444-4d28-aa62-607fe075f4e4}" Name="NOMBRE_FEQ" DataType="CSTRING" Size="101" ScreenPicture="@s100" ScreenPrompt="NOMBRE FEQ:" ReportHeading="NOMBRE FEQ" ReportControl=" STRING(@s100),USE(PCT:NOMBRE_FEQ)">
+			<WindowControl>
+				<Line Text=" PROMPT(&apos;NOMBRE FEQ:&apos;),USE(?PCT:NOMBRE_FEQ:Prompt)"/>
+				<Line Text=" ENTRY(@s100),USE(PCT:NOMBRE_FEQ)"/>
+			</WindowControl>
+			<Audit CreateUser="Administrator" CreateDate="26 AUG 2021" CreateTime=" 5:21:03PM" CreateVersionNumber="1" ModifiedUser="Administrator" ModifiedDate="26 AUG 2021" ModifiedTime=" 5:21:03PM" ModifiedVersionNumber="1"/>
+			<Validity Check="NOCHECKS"/>
+		</Field>
+		<Field Guid="{0ad0ddef-3c24-4bf3-8f80-5ff2944a44d5}" Name="COLUMNA" DataType="LONG" Size="4" ScreenPicture="@n-14" ScreenPrompt="COLUMNA:" ReportHeading="COLUMNA" Justification="RIGHT" Offset="1" ReportControl=" STRING(@n-14),USE(PCT:COLUMNA),RIGHT(1)">
+			<WindowControl>
+				<Line Text=" PROMPT(&apos;COLUMNA:&apos;),USE(?PCT:COLUMNA:Prompt)"/>
+				<Line Text=" ENTRY(@n-14),USE(PCT:COLUMNA),RIGHT(1)"/>
+			</WindowControl>
+			<Audit CreateUser="Administrator" CreateDate="26 AUG 2021" CreateTime=" 5:21:03PM" CreateVersionNumber="1" ModifiedUser="Administrator" ModifiedDate="26 AUG 2021" ModifiedTime=" 5:21:03PM" ModifiedVersionNumber="1"/>
+			<Validity Check="NOCHECKS"/>
+		</Field>
+		<Field Guid="{3e2be33c-5e13-4d5b-aace-0f00f0c9310a}" Name="TEXT" DataType="CSTRING" Size="256" ScreenPicture="@s255" ScreenPrompt="TEXT:" ReportHeading="TEXT" ReportControl=" STRING(@s255),USE(PCT:TEXT)">
+			<WindowControl>
+				<Line Text=" PROMPT(&apos;TEXT:&apos;),USE(?PCT:TEXT:Prompt)"/>
+				<Line Text=" ENTRY(@s255),USE(PCT:TEXT)"/>
+			</WindowControl>
+			<Audit CreateUser="Administrator" CreateDate="26 AUG 2021" CreateTime=" 5:21:03PM" CreateVersionNumber="1" ModifiedUser="Administrator" ModifiedDate="26 AUG 2021" ModifiedTime=" 5:21:03PM" ModifiedVersionNumber="1"/>
+			<Validity Check="NOCHECKS"/>
+		</Field>
+		<Field Guid="{172a25c9-1a7b-4402-8bbf-8bf87a2fd483}" Name="PRIME" DataType="CSTRING" Size="256" ScreenPicture="@s255" ScreenPrompt="PRIME:" ReportHeading="PRIME" ReportControl=" STRING(@s255),USE(PCT:PRIME)">
+			<WindowControl>
+				<Line Text=" PROMPT(&apos;PRIME:&apos;),USE(?PCT:PRIME:Prompt)"/>
+				<Line Text=" ENTRY(@s255),USE(PCT:PRIME)"/>
+			</WindowControl>
+			<Audit CreateUser="Administrator" CreateDate="26 AUG 2021" CreateTime=" 5:21:03PM" CreateVersionNumber="1" ModifiedUser="Administrator" ModifiedDate="26 AUG 2021" ModifiedTime=" 5:21:03PM" ModifiedVersionNumber="1"/>
+			<Validity Check="NOCHECKS"/>
+		</Field>
+		<Field Guid="{81d4a0b8-3d35-47aa-9740-2523a2e662f5}" Name="DISABLE" DataType="LONG" Size="4" ScreenPicture="@n-14" ScreenPrompt="DISABLE:" ReportHeading="DISABLE" Justification="RIGHT" Offset="1" ReportControl=" STRING(@n-14),USE(PCT:DISABLE),RIGHT(1)">
+			<WindowControl>
+				<Line Text=" PROMPT(&apos;DISABLE:&apos;),USE(?PCT:DISABLE:Prompt)"/>
+				<Line Text=" ENTRY(@n-14),USE(PCT:DISABLE),RIGHT(1)"/>
+			</WindowControl>
+			<Audit CreateUser="Administrator" CreateDate="26 AUG 2021" CreateTime=" 5:21:03PM" CreateVersionNumber="1" ModifiedUser="Administrator" ModifiedDate="26 AUG 2021" ModifiedTime=" 5:21:03PM" ModifiedVersionNumber="1"/>
+			<Validity Check="NOCHECKS"/>
+		</Field>
+		<Field Guid="{1b931219-065d-4fe6-901c-67f553575a6c}" Name="HIDE" DataType="LONG" Size="4" ScreenPicture="@n-14" ScreenPrompt="HIDE:" ReportHeading="HIDE" Justification="RIGHT" Offset="1" ReportControl=" STRING(@n-14),USE(PCT:HIDE),RIGHT(1)">
+			<WindowControl>
+				<Line Text=" PROMPT(&apos;HIDE:&apos;),USE(?PCT:HIDE:Prompt)"/>
+				<Line Text=" ENTRY(@n-14),USE(PCT:HIDE),RIGHT(1)"/>
+			</WindowControl>
+			<Audit CreateUser="Administrator" CreateDate="26 AUG 2021" CreateTime=" 5:21:03PM" CreateVersionNumber="1" ModifiedUser="Administrator" ModifiedDate="26 AUG 2021" ModifiedTime=" 5:21:03PM" ModifiedVersionNumber="1"/>
+			<Validity Check="NOCHECKS"/>
+		</Field>
+		<Field Guid="{f922fb69-cf78-43a1-991c-6a8d62cbc29c}" Name="REQUIRED" DataType="LONG" Size="4" ScreenPicture="@n-14" ScreenPrompt="REQUIRED:" ReportHeading="REQUIRED" Justification="RIGHT" Offset="1" ReportControl=" STRING(@n-14),USE(PCT:REQUIRED),RIGHT(1)">
+			<WindowControl>
+				<Line Text=" PROMPT(&apos;REQUIRED:&apos;),USE(?PCT:REQUIRED:Prompt)"/>
+				<Line Text=" ENTRY(@n-14),USE(PCT:REQUIRED),RIGHT(1)"/>
+			</WindowControl>
+			<Audit CreateUser="Administrator" CreateDate="26 AUG 2021" CreateTime=" 5:21:03PM" CreateVersionNumber="1" ModifiedUser="Administrator" ModifiedDate="26 AUG 2021" ModifiedTime=" 5:21:03PM" ModifiedVersionNumber="1"/>
+			<Validity Check="NOCHECKS"/>
+		</Field>
+		<Field Guid="{aa2b4908-4c38-43d0-b1dd-bc152d7b8956}" Name="READONLY" DataType="LONG" Size="4" ScreenPicture="@n-14" ScreenPrompt="READONLY:" ReportHeading="READONLY" Justification="RIGHT" Offset="1" ReportControl=" STRING(@n-14),USE(PCT:READONLY),RIGHT(1)">
+			<WindowControl>
+				<Line Text=" PROMPT(&apos;READONLY:&apos;),USE(?PCT:READONLY:Prompt)"/>
+				<Line Text=" ENTRY(@n-14),USE(PCT:READONLY),RIGHT(1)"/>
+			</WindowControl>
+			<Audit CreateUser="Administrator" CreateDate="26 AUG 2021" CreateTime=" 5:21:03PM" CreateVersionNumber="1" ModifiedUser="Administrator" ModifiedDate="26 AUG 2021" ModifiedTime=" 5:21:03PM" ModifiedVersionNumber="1"/>
+			<Validity Check="NOCHECKS"/>
+		</Field>
+		<Key Guid="{f102348d-c9cf-48ba-9c54-d117b9327925}" Order="1" Name="XID_PCT" KeyType="KEY" Unique="true" Primary="true" AutoNumber="true">
+			<Audit CreateUser="Administrator" CreateDate="26 AUG 2021" CreateTime=" 5:21:03PM" CreateVersionNumber="1" ModifiedUser="Administrator" ModifiedDate="26 AUG 2021" ModifiedTime=" 5:21:03PM" ModifiedVersionNumber="1"/>
+			<Component Guid="{c7247c2a-5c04-44b6-8f28-57d8cbc0f478}" FieldId="{36b43050-10f5-4679-8963-000e72c1362d}" Order="1" Ascend="true">
+				<Audit CreateUser="Administrator" CreateDate="26 AUG 2021" CreateTime=" 5:21:03PM" CreateVersionNumber="1" ModifiedUser="Administrator" ModifiedDate="26 AUG 2021" ModifiedTime=" 5:21:03PM" ModifiedVersionNumber="1"/>
+			</Component>
+		</Key>
+		<Key Guid="{0a0ca7b2-3dfc-4e60-8f07-f6999850d609}" Order="2" Name="xUSU_PRO_PCT" KeyType="KEY">
+			<Audit CreateUser="Administrator" CreateDate="26 AUG 2021" CreateTime=" 5:21:03PM" CreateVersionNumber="1" ModifiedUser="Administrator" ModifiedDate="26 AUG 2021" ModifiedTime=" 5:21:03PM" ModifiedVersionNumber="1"/>
+			<Component Guid="{d1bb1e0a-2309-428d-adfa-19baf4736b64}" FieldId="{1ab8b284-a04c-4f2d-98b4-8865039a65ec}" Order="1" Ascend="true">
+				<Audit CreateUser="Administrator" CreateDate="26 AUG 2021" CreateTime=" 5:21:03PM" CreateVersionNumber="1" ModifiedUser="Administrator" ModifiedDate="26 AUG 2021" ModifiedTime=" 5:21:03PM" ModifiedVersionNumber="1"/>
+			</Component>
+			<Component Guid="{c94abf5c-dbd7-4aff-87bc-66ba5f16490d}" FieldId="{560403ef-134d-4bd1-93bd-589f0fdc9792}" Order="2" Ascend="true">
+				<Audit CreateUser="Administrator" CreateDate="26 AUG 2021" CreateTime=" 5:21:03PM" CreateVersionNumber="1" ModifiedUser="Administrator" ModifiedDate="26 AUG 2021" ModifiedTime=" 5:21:03PM" ModifiedVersionNumber="1"/>
+			</Component>
+			<Component Guid="{c9ed6477-18bf-4891-ab45-a4937a678c8d}" FieldId="{f3e91f01-9444-4d28-aa62-607fe075f4e4}" Order="3" Ascend="true">
+				<Audit CreateUser="Administrator" CreateDate="26 AUG 2021" CreateTime=" 5:21:03PM" CreateVersionNumber="1" ModifiedUser="Administrator" ModifiedDate="26 AUG 2021" ModifiedTime=" 5:21:03PM" ModifiedVersionNumber="1"/>
+			</Component>
+		</Key>
+		<Key Guid="{b0f897d4-418f-4628-803f-714979bea709}" Order="3" Name="xUSU_PRO_FEQ_PCT" KeyType="KEY">
+			<Audit CreateUser="Administrator" CreateDate="26 AUG 2021" CreateTime=" 6:18:00PM" CreateVersionNumber="1" ModifiedUser="Administrator" ModifiedDate="26 AUG 2021" ModifiedTime=" 6:18:00PM" ModifiedVersionNumber="1"/>
+			<Component Guid="{5643438c-a1db-47b9-90bf-d569d76013ca}" FieldId="{1ab8b284-a04c-4f2d-98b4-8865039a65ec}" Order="1" Ascend="true">
+				<Audit CreateUser="Administrator" CreateDate="26 AUG 2021" CreateTime=" 6:18:00PM" CreateVersionNumber="1" ModifiedUser="Administrator" ModifiedDate="26 AUG 2021" ModifiedTime=" 6:18:00PM" ModifiedVersionNumber="1"/>
+			</Component>
+			<Component Guid="{f29a3449-4949-4c97-a7c1-4f7c21cd0bb5}" FieldId="{560403ef-134d-4bd1-93bd-589f0fdc9792}" Order="2" Ascend="true">
+				<Audit CreateUser="Administrator" CreateDate="26 AUG 2021" CreateTime=" 6:18:00PM" CreateVersionNumber="1" ModifiedUser="Administrator" ModifiedDate="26 AUG 2021" ModifiedTime=" 6:18:00PM" ModifiedVersionNumber="1"/>
+			</Component>
+			<Component Guid="{3f58251a-9cf5-42bf-aa70-03a538277dc1}" FieldId="{e6729f59-c902-4e2d-ad58-90a0c1751f83}" Order="3" Ascend="true">
+				<Audit CreateUser="Administrator" CreateDate="26 AUG 2021" CreateTime=" 6:18:00PM" CreateVersionNumber="1" ModifiedUser="Administrator" ModifiedDate="26 AUG 2021" ModifiedTime=" 6:18:00PM" ModifiedVersionNumber="1"/>
+			</Component>
+		</Key>
+		<Alias Guid="{718f8205-3508-459f-94b9-5c16ee7b580a}" Name="PAR_CTRLS_1" Prefix="PCT1">
+			<Audit CreateUser="Administrator" CreateDate="26 AUG 2021" CreateTime=" 5:21:25PM" CreateVersionNumber="1" ModifiedUser="Administrator" ModifiedDate="26 AUG 2021" ModifiedTime=" 5:21:25PM" ModifiedVersionNumber="1"/>
+		</Alias>
+	</Table>
+</Dictionary>
+
