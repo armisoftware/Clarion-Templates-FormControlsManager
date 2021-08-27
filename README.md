@@ -33,6 +33,7 @@ Pasos para implementar:
 
 El código se activa solo si el form esta en Insert.
 Al pulsar la tecla elegida, CTRLF5 por defecto aparecerá un menu popup para elegir que acción realizar.
+https://github.com/armisoftware/Clarion-Templates-FormControlsManager/blob/main/1.png
 - Modificar controles en ventana
   Esta opción dibuja un box azul en la esquina superior izquierda de cada control.
   Haciendo click en el box se abre la ventana de edición de las propiedades de ese control.
