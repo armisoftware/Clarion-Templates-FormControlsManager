@@ -1,5 +1,5 @@
 # Clarion-Templates-FormControlsManager
-Template para poder programar las porpiedades de los controles de un Form en tiempo real.
+Template para poder programar las propiedades de los controles de un Form en tiempo real.
 
 El objetivo de este template es poder cumplir con los pedidos de los clientes respecto de que ver y como
 en cada form del sistema.
