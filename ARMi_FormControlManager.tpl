@@ -1,6 +1,6 @@
 #TEMPLATE(ARMi_Form_Control_Manager,'ARMi Form Control Manager Templates'),FAMILY('ABC')
 #!---------------------------------------------------------------------------------------------------------------------------------------------------------
-#EXTENSION(ARMi_FormControlManager,'ARMi Cambiar Propiedades de Controles en Form'),PROCEDURE
+#EXTENSION(ARMi_FormControlManagerGlobal,'ARMi Cambiar Propiedades de Controles en Form (Global)'),APPLICATION
 #!---------------------------------------------------------------------------------------------------------------------------------------------------------
 #Boxed
     #Display('Form Control Manager')
@@ -14,19 +14,19 @@
     #DISPLAY ('y los procedimientos ARMi_FieldProperties y ARMi_FieldPropertiesEdit,')
     #DISPLAY ('que pueden ser importardos con el botón mas abajo.')
     #DISPLAY ('')
-    #PROMPT('Puede Editar si  :',@S200),%PuedeEditar,DEFAULT('choose(1=1,true,0)'),REQ
+    #PROMPT('Puede Editar si  :',@S200),%ARMiFcmPuedeEditar,DEFAULT('choose(1=1,true,0)'),REQ
     #DISPLAY ('Expresión, si es true, el usuario puede editar.')
     #DISPLAY ('')
-    #PROMPT('Tecla para Editar:',KEYCODE),%TeclaHist,DEFAULT('CtrlF5'),REQ
+    #PROMPT('Tecla para Editar:',KEYCODE),%ARMiFcmTeclaEditar,DEFAULT('CtrlF5'),REQ
     #DISPLAY ('')
 #EndBoxed
 #Display()
 #Prepare
-    #Declare(%scExists)
-    #SET(%scExists,CALL(%scExistsGroup))
+    #Declare(%ARMiExisten)
+    #SET(%ARMiExisten,CALL(%ARMiExistenGroup))
 #EndPrepare
-#enable(%scExists=0)
-    #Button('Importar Procedimientos Necesarios'),WhenAccepted(%ImportarProcedimientos()),at(,,180)
+#enable(%ARMiExisten=0)
+    #Button('Importar Procedimientos Necesarios'),WhenAccepted(%ARMiImportarProcs()),at(,,180)
     #EndButton
 #endEnable
 #!------------------------------------------------------------------------------
@@ -36,41 +36,26 @@
     END
 #ENDAT
 #!------------------------------------------------------------------------------
+#EXTENSION(ARMi_FormControlManagerLocal,'ARMi Cambiar Propiedades de Controles en Form (Local)'),WINDOW
+#!---------------------------------------------------------------------------------------------------------------------------------------------------------
+#Boxed
+    #Display('Form Control Manager')
+    #Display('Version 2.3')
+    #Display('Copyright © 2021 by ARMi software solutions')
+    #Display('www.armisoftware.com')
+#EndBoxed
+#Boxed
+    #DISPLAY ('Debe tener inastalada la extension global del template')
+    #DISPLAY ('')
+#EndBoxed
+#Display()
+#!------------------------------------------------------------------------------
 #AT( %WindowManagerMethodCodeSection, 'Init', '(),BYTE'),PRIORITY(8360),DESCRIPTION('Graba controles por defecto y lee valores actuales')
-!GRABA PAR_CTRLS POR DEFECTO Y LEE EL QUE LE CORRESPONDE SI EXISTE
-setcursor(cursor:wait)
-Access:PAR_CTRLS.open()
-
-!LEE CAMBIOS PARA TODOS, GRUPO Y USUARIO
-LOOP FLD# = FIRSTFIELD() TO LASTFIELD()
-  clear(pct:record)
-  ID#=0
-  PCT:USU_ID   = 0 !TODOS
-  PCT:PROCEDIMIENTO = GlobalErrors.GetProcedureName()
-  PCT:NOMBRE_FEQ   = FEQ_ToString(fld#)
-  if NOT Access:par_ctrls.fetch(PCT:xUSU_PRO_PCT)
-     ID#=PCT:ID
-  END
-  IF ID#>0 and FLD#{PROP:Type}<>create:sheet !sheet lo dejo solo para cuando tenga tamaño y posicion
-     FLD#{PROP:TEXT} =PCT:TEXT
-     fld#{prop:Disable}=PCT:DISABLE
-     fld#{prop:Hide}=PCT:HIDE
-     IF PCT:COLUMNA  = 0
-        fld#{prop:Req}=PCT:REQUIRED
-        fld#{prop:READONLY}=PCT:READONLY
-        if self.Request=InsertRecord 
-            change(fld#,PCT:PRIME)
-            fld#{PROP:Touched} = TRUE 
-        END
-     END
-  END   
-END
-Access:PAR_CTRLS.close()
-setcursor()
+#CALL(%ARMiFcmInit)
 #ENDAT
 
 #AT( %WindowManagerMethodCodeSection, 'SetAlerts', '()'),PRIORITY(2500),DESCRIPTION('Alerta Tecla de Control props')
-ALERT(%TeclaHist)
+ALERT(%ARMiFcmTeclaEditar)
 #ENDAT
 
 #AT(%WindowManagerMethodCodeSection,'TakeEvent','(),BYTE'),PRIORITY(2500),DESCRIPTION('Detecta click en Regiones de F5')
@@ -104,23 +89,23 @@ ALERT(%TeclaHist)
             fld#{PROP:Touched} = TRUE 
         END
      END
+     DISPLAY()
   END
 #ENDAT
 
-
 #AT( %WindowEventHandling, 'AlertKey'),PRIORITY(5000),DESCRIPTION('Detecta Tecla de Control Props y Edita')
-IF KEYCODE()=%TeclaHist and %PuedeEditar=true
+IF KEYCODE()=%ARMiFcmTeclaEditar and %ARMiFcmPuedeEditar=true
   if self.request=InsertRecord
     cho# = POPUP('{{' & |
                      '['&PROP:Icon&'(~prnfile.ico)]Modificar Controles en Ventana<9>|' & |
-                     '['&PROP:Icon&'(~prnfile.ico)]Editar Todos los Controles<9>|' & |
+                     '['&PROP:Icon&'(~prnfile.ico)]Editar Controles y tamaño de Ventana<9>|' & |
                      '['&PROP:Icon&'(~prnfile.ico)]Regenerar Controles por Defecto<9>|' & |
                  '}',10,10,1 )
     CASE cho#
     OF 1
         setcursor(cursor:wait)
         fld#=0
-        LOOP FLD# = FIRSTFIELD() TO LASTFIELD()
+        LOOP FLD# = 1 TO LASTFIELD()
             if fld#>1000 then break end
             IF fld#{PROP:type}=create:sheet THEN SHEET#=FLD# END
             IF fld#{PROP:type}=create:TAB THEN TAB#=FLD# END
@@ -135,8 +120,8 @@ IF KEYCODE()=%TeclaHist and %PuedeEditar=true
             NewBox#=1000+fld#                
             if fld#{PROP:type}=create:tab
                 CREATE(NewBox#,CREATE:region,FLD#)
-                NewBox#{PROP:Xpos}  = SHEET#{PROP:Xpos}!+SHEET#{PROP:Width}-6
-                NewBox#{PROP:Ypos}  = SHEET#{PROP:Ypos}+10!SHEET#{PROP:Height}-6
+                NewBox#{PROP:Xpos}  = SHEET#{PROP:Xpos}+SHEET#{PROP:Width}-6
+                NewBox#{PROP:Ypos}  = SHEET#{PROP:Ypos}+10  !SHEET#{PROP:Height}-6
             ELSE
                 CREATE(NewBox#,CREATE:region,PAR#)
                 NewBox#{PROP:Xpos}  = fld#{PROP:Xpos}-3
@@ -151,16 +136,48 @@ IF KEYCODE()=%TeclaHist and %PuedeEditar=true
         setcursor()
     of 2
        Access:PAR_CTRLS.open()
-       PCT:PROCEDIMIENTO = GlobalErrors.GetProcedureName()
-       ARMi_FieldProperties(PCT:PROCEDIMIENTO)
-       Access:PAR_CTRLS.close()
+        setcursor(cursor:wait)
+        clear(pct:record)
+        PCT:USU_ID   = 0 !TODOS
+        PCT:PROCEDIMIENTO = GlobalErrors.GetProcedureName()
+        PCT:FEQ = 0
+        if Access:par_ctrls.fetch(PCT:xUSU_PRO_FEQ_PCT)
+           PCT:USU_ID   = 0 !TODOS
+           PCT:PROCEDIMIENTO = GlobalErrors.GetProcedureName()
+           PCT:FEQ = 0
+           PCT:DISABLE =0{prop:width}
+           PCT:HIDE    =0{prop:HEIGHT}
+           PCT:REQUIRED=0{prop:width}
+           PCT:READONLY=0{prop:HEIGHT}
+           Access:par_ctrls.Insert()
+        end
+        PCT:PROCEDIMIENTO = GlobalErrors.GetProcedureName()
+        ARMi_FieldProperties(PCT:PROCEDIMIENTO)
+        Access:PAR_CTRLS.close()
+        #CALL(%ARMiFcmInit)
     of 3
         Access:PAR_CTRLS.open()
         setcursor(cursor:wait)
-        LOOP FLD# = FIRSTFIELD() TO LASTFIELD()
-          PCT:USU_ID   = -1 !POR DEFECTO
+        clear(pct:record)
+        PCT:USU_ID   = 0 !TODOS
+        PCT:PROCEDIMIENTO = GlobalErrors.GetProcedureName()
+        PCT:FEQ = 0
+        if Access:par_ctrls.fetch(PCT:xUSU_PRO_FEQ_PCT)
+           PCT:USU_ID   = 0 !TODOS
+           PCT:PROCEDIMIENTO = GlobalErrors.GetProcedureName()
+           PCT:FEQ = 0
+           PCT:REQUIRED=0{prop:width}
+           PCT:READONLY=0{prop:HEIGHT}
+           Access:par_ctrls.Insert()
+        else
+           PCT:REQUIRED=PCT:DISABLE
+           PCT:READONLY=PCT:HIDE
+           Access:par_ctrls.Update()
+        end
+        LOOP FLD# = 1 TO LASTFIELD()
+          PCT:USU_ID        = -1 !POR DEFECTO
           PCT:PROCEDIMIENTO = GlobalErrors.GetProcedureName()
-          PCT:NOMBRE_FEQ   = FEQ_ToString(fld#)
+          PCT:NOMBRE_FEQ    = FEQ_ToString(fld#)
           if inlist(fld#{PROP:type},create:sheet,create:list,create:panel,create:line,create:box,create:string)
             cycle
           end  
@@ -189,6 +206,7 @@ IF KEYCODE()=%TeclaHist and %PuedeEditar=true
         END
         setcursor()
         Access:PAR_CTRLS.close()
+        #CALL(%ARMiFcmInit)
     end    
   ELSE
     message('Debe estar Agregando un registro para poder modificar controles.','Atención!',ICON:Asterisk)
@@ -196,12 +214,53 @@ IF KEYCODE()=%TeclaHist and %PuedeEditar=true
 END
 #ENDAT
 #!------------------------------------------------------------------------------
-#GROUP(%ImportarProcedimientos)
+#GROUP(%ARMiImportarProcs)
     #IMPORT('ARMi_FormControlManager.Txa')
 #!------------------------------------------------------------------------------
-#GROUP(%scExistsGroup),Preserve
+#GROUP(%ARMiExistenGroup),Preserve
   #FOR(%Procedure),Where(lower(%Procedure)=lower('ARMi_FieldProperties') or lower(%Procedure) = lower('ARMi_FieldPropertiesEdit'))
     #RETURN(1)
   #ENDFOR
   #RETURN(0)
 #!------------------------------------------------------------------------------
+#GROUP(%ARMiFcmInit)
+!GRABA PAR_CTRLS POR DEFECTO Y LEE EL QUE LE CORRESPONDE SI EXISTE
+setcursor(cursor:wait)
+Access:PAR_CTRLS.open()
+
+!LEE CAMBIOS DE VENTANA...
+clear(pct:record)
+PCT:USU_ID   = 0 !TODOS
+PCT:PROCEDIMIENTO = GlobalErrors.GetProcedureName()
+PCT:FEQ = 0
+if not Access:par_ctrls.fetch(PCT:xUSU_PRO_FEQ_PCT)
+   if PCT:REQUIRED>0 then 0{prop:width}=PCT:REQUIRED end
+   if PCT:READONLY>0 then 0{prop:HEIGHT}=PCT:READONLY end
+end
+
+!LEE CAMBIOS DE PROPIEDADES...
+LOOP FLD# = 1 TO LASTFIELD()
+  clear(pct:record)
+  ID#=0
+  PCT:USU_ID   = 0 !TODOS
+  PCT:PROCEDIMIENTO = GlobalErrors.GetProcedureName()
+  PCT:NOMBRE_FEQ   = FEQ_ToString(fld#)
+  if NOT Access:par_ctrls.fetch(PCT:xUSU_PRO_PCT)
+     ID#=PCT:ID
+  END
+  IF ID#>0 and FLD#{PROP:Type}<>create:sheet !sheet lo dejo solo para cuando tenga tamaño y posicion
+     FLD#{PROP:TEXT} =PCT:TEXT
+     fld#{prop:Disable}=PCT:DISABLE
+     fld#{prop:Hide}=PCT:HIDE
+     IF PCT:COLUMNA  = 0
+        fld#{prop:Req}=PCT:REQUIRED
+        fld#{prop:READONLY}=PCT:READONLY
+        if self.Request=InsertRecord 
+            change(fld#,PCT:PRIME)
+            fld#{PROP:Touched} = TRUE 
+        END
+     END
+  END   
+END
+Access:PAR_CTRLS.close()
+setcursor()
