@@ -20,7 +20,7 @@ Pasos para implementar:
   Esta tabla esta por defecto seteada como MSSQL y con variables en el Owner para una conexion SQL.
   Si trabaja con TPS simplemente borre las variables en Owner y cambie el Driver a TOPSPEED.
 - Abra su aplicación
-- Elija el form al cual agrgarle el template, Insert, tipee armi para acercarse al mismo, elija y listo.
+- En las extensiones GLOBALES agregre el template global.
 - El template le pedirá dos datos:
   1- Una expresion para evaluar y si cuyo resultado es true, entonces el usuario actual puede usarlo.
      Como ejemplo si queremos usarlo solo para supervisores, agaregar algo como:
@@ -29,6 +29,7 @@ Pasos para implementar:
 - En la misma ventana, pulse el botón "Importar Procedimientos Necesarios", 
   esto hara que se importen dos procediemientos llamados "ARMi_FieldProperties" y "ARMi_FieldPropertiesEdit"
   que son los que se utilizarán para las ediciones.
+- Agregue el tempplate Local en el o los forms a los que agrgarle el template y listo.
 - Compile normalmente.
 
 El código se activa solo si el form esta en Insert.
@@ -42,10 +43,11 @@ https://github.com/armisoftware/Clarion-Templates-FormControlsManager/blob/main/
 - Editar Todos los Controles
   Esta opción es similar solo que se abre un Browse para modificar cualquier control con edit in place.
   https://github.com/armisoftware/Clarion-Templates-FormControlsManager/blob/main/3.png
+  En esta opción se da la posibilidad de modificar ancho y alto de la ventana.
 - Regenerar controles por defecto
   Esta opción es para cuando se hace alguna modificación de la ventana original y el control nuevo no aparece en la lista.
   
-Como ejemplo les dejo el ejemplo School que viene con Clarion, el template esta agregado en el FormStudents.
+Como ejemplo les dejo el ejemplo School que viene con Clarion, el template esta agregado en el FormStudents y FormCourses.
 
 Es todo, espero les sirva.  
 
