@@ -77,15 +77,22 @@ ALERT(%ARMiFcmTeclaEditar)
           )
      !string pProcedure,string pNombreFeq,long pType,long pFeq,string pText,long pDisable,long pHide,string pUse,long pReq,long pReadOnly
           
-     !message(fld#{prop:text})
-     FLD#{PROP:TEXT} =PCT:TEXT
+     if fld#{PROP:type}=create:list
+       FLD#{PROP:From} = PCT:TEXT    
+     else
+       FLD#{PROP:TEXT} = PCT:TEXT
+     end
      fld#{prop:Disable}=PCT:DISABLE
-     fld#{prop:Hide}=PCT:HIDE
-     IF PCT:COLUMNA  = 0
-        fld#{prop:Req}=PCT:REQUIRED
+     fld#{prop:Hide}   =PCT:HIDE
+     IF PCT:COLUMNA    =0
+        fld#{prop:Req}     =PCT:REQUIRED
         fld#{prop:READONLY}=PCT:READONLY
         if self.Request=InsertRecord 
-            change(fld#,PCT:PRIME)
+            if fld#{PROP:type}=create:list
+               select(fld#,PCT:PRIME)
+            else
+               change(fld#,PCT:PRIME)
+            end
             fld#{PROP:Touched} = TRUE 
         END
      END
@@ -96,10 +103,23 @@ ALERT(%ARMiFcmTeclaEditar)
 #AT( %WindowEventHandling, 'AlertKey'),PRIORITY(5000),DESCRIPTION('Detecta Tecla de Control Props y Edita')
 IF KEYCODE()=%ARMiFcmTeclaEditar and %ARMiFcmPuedeEditar=true
   if self.request=InsertRecord
+    !si aun no hay valores x defecto, los creo
+    setcursor(cursor:wait)
+    clear(pct:record)
+    PCT:USU_ID   = -1 !x defecto
+    PCT:PROCEDIMIENTO = GlobalErrors.GetProcedureName()
+    set(PCT:xUSU_PRO_FEQ_PCT,PCT:xUSU_PRO_FEQ_PCT)
+    next(PAR_CTRLS)
+    if error() |
+    or PCT:USU_ID   <> -1 |
+    or PCT:PROCEDIMIENTO = GlobalErrors.GetProcedureName()
+        #CALL(%ARMiFcmLeerPorDefecto)
+    END
+    setcursor()
     cho# = POPUP('{{' & |
                      '['&PROP:Icon&'(~prnfile.ico)]Modificar Controles en Ventana<9>|' & |
                      '['&PROP:Icon&'(~prnfile.ico)]Editar Controles y tamaño de Ventana<9>|' & |
-                     '['&PROP:Icon&'(~prnfile.ico)]Regenerar Controles por Defecto<9>|' & |
+                     '['&PROP:Icon&'(~prnfile.ico)]Regenerar Controles por Defecto y resetear ventana<9>|' & |
                  '}',10,10,1 )
     CASE cho#
     OF 1
@@ -174,38 +194,7 @@ IF KEYCODE()=%ARMiFcmTeclaEditar and %ARMiFcmPuedeEditar=true
            PCT:READONLY=PCT:HIDE
            Access:par_ctrls.Update()
         end
-        LOOP FLD# = 1 TO LASTFIELD()
-          PCT:USU_ID        = -1 !POR DEFECTO
-          PCT:PROCEDIMIENTO = GlobalErrors.GetProcedureName()
-          PCT:NOMBRE_FEQ    = FEQ_ToString(fld#)
-          if inlist(fld#{PROP:type},create:sheet,create:list,create:panel,create:line,create:box,create:string)
-            cycle
-          end  
-          if Access:par_ctrls.fetch(PCT:xUSU_PRO_PCT)
-              PCT:USU_ID   = -1 !POR DEFECTO
-              PCT:PROCEDIMIENTO = GlobalErrors.GetProcedureName()
-              PCT:FEQ      = fld#{prop:feq}
-              PCT:NOMBRE_FEQ   = FEQ_ToString(fld#) 
-              PCT:COLUMNA  = 0
-              PCT:TEXT     = FLD#{PROP:TEXT}
-              PCT:DISABLE  = fld#{prop:Disable}
-              PCT:HIDE     = fld#{prop:Hide}
-              if inlist(fld#{PROP:type},create:entry,create:text)
-                PCT:PRIME    = FLD#{PROP:USE}
-                PCT:REQUIRED = fld#{prop:Req}
-                PCT:READONLY = fld#{PROP:READONLY}
-                PCT:COLUMNA  = 0  !SON EDITABLES
-              else
-                PCT:REQUIRED = 0
-                PCT:READONLY = 0
-                PCT:PRIME    = '' 
-                PCT:COLUMNA  = 1  !NO SON EDITABLES
-              end              
-              Access:par_ctrls.Insert()
-          end
-        END
-        setcursor()
-        Access:PAR_CTRLS.close()
+        #CALL(%ARMiFcmLeerPorDefecto)
         #CALL(%ARMiFcmInit)
     end    
   ELSE
@@ -249,14 +238,23 @@ LOOP FLD# = 1 TO LASTFIELD()
      ID#=PCT:ID
   END
   IF ID#>0 and FLD#{PROP:Type}<>create:sheet !sheet lo dejo solo para cuando tenga tamaño y posicion
-     FLD#{PROP:TEXT} =PCT:TEXT
+     if fld#{PROP:type}=create:list
+       FLD#{PROP:From} = PCT:TEXT    
+     else
+       FLD#{PROP:TEXT} = PCT:TEXT
+     end
      fld#{prop:Disable}=PCT:DISABLE
      fld#{prop:Hide}=PCT:HIDE
      IF PCT:COLUMNA  = 0
         fld#{prop:Req}=PCT:REQUIRED
         fld#{prop:READONLY}=PCT:READONLY
         if self.Request=InsertRecord 
-            change(fld#,PCT:PRIME)
+            if fld#{PROP:type}=create:list
+                select(fld#,PCT:PRIME)
+                display(fld#)
+            else
+                change(fld#,PCT:PRIME)
+            end
             fld#{PROP:Touched} = TRUE 
         END
      END
@@ -264,3 +262,65 @@ LOOP FLD# = 1 TO LASTFIELD()
 END
 Access:PAR_CTRLS.close()
 setcursor()
+
+#!------------------------------------------------------------------------------
+#GROUP(%ARMiFcmLeerPorDefecto)
+    setcursor(cursor:wait)
+    Access:PAR_CTRLS.open()
+    LOOP FLD# = 1 TO LASTFIELD()
+      PCT:USU_ID        = -1 !POR DEFECTO
+      PCT:PROCEDIMIENTO = GlobalErrors.GetProcedureName()
+      PCT:NOMBRE_FEQ    = FEQ_ToString(fld#)
+      if inlist(fld#{PROP:type},create:sheet,create:panel,create:line,create:box,create:string)
+        cycle
+      end  
+      if Access:par_ctrls.fetch(PCT:xUSU_PRO_PCT)
+          PCT:USU_ID   = -1 !POR DEFECTO
+          PCT:PROCEDIMIENTO = GlobalErrors.GetProcedureName()
+          PCT:FEQ      = fld#{prop:feq}
+          PCT:NOMBRE_FEQ   = FEQ_ToString(fld#) 
+          PCT:COLUMNA  = 0
+          if fld#{PROP:type}=create:list
+            PCT:TEXT     = FLD#{PROP:From}
+          else
+            PCT:TEXT     = FLD#{PROP:TEXT}
+          end
+          PCT:DISABLE  = fld#{prop:Disable}
+          PCT:HIDE     = fld#{prop:Hide}
+          if inlist(fld#{PROP:type},create:entry,create:text,create:list)
+            PCT:PRIME    = FLD#{PROP:USE}
+            PCT:REQUIRED = fld#{prop:Req}
+            PCT:READONLY = fld#{PROP:READONLY}
+            PCT:COLUMNA  = 0  !SON EDITABLES
+          else
+            PCT:REQUIRED = 0
+            PCT:READONLY = 0
+            PCT:PRIME    = '' 
+            PCT:COLUMNA  = 1  !NO SON EDITABLES
+          end              
+          Access:par_ctrls.Insert()
+      else
+          PCT:COLUMNA  = 0
+          if fld#{PROP:type}=create:list
+            PCT:TEXT     = FLD#{PROP:From}
+          else
+            PCT:TEXT     = FLD#{PROP:TEXT}
+          end
+          PCT:DISABLE  = fld#{prop:Disable}
+          PCT:HIDE     = fld#{prop:Hide}
+          if inlist(fld#{PROP:type},create:entry,create:text,create:list)
+            PCT:PRIME    = FLD#{PROP:USE}
+            PCT:REQUIRED = fld#{prop:Req}
+            PCT:READONLY = fld#{PROP:READONLY}
+            PCT:COLUMNA  = 0  !SON EDITABLES
+          else
+            PCT:REQUIRED = 0
+            PCT:READONLY = 0
+            PCT:PRIME    = '' 
+            PCT:COLUMNA  = 1  !NO SON EDITABLES
+          end              
+          Access:par_ctrls.Update()
+      end
+    END
+    setcursor()
+    Access:PAR_CTRLS.close()

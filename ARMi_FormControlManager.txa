@@ -285,7 +285,8 @@ WHEN  (6) ('BrowseBox(ABC)')
 
 %ProcedureUserBindExpression DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
 
-%ButtonAction DEPEND %Control DEFAULT TIMES 5
+%ButtonAction DEPEND %Control DEFAULT TIMES 6
+WHEN  ('') ('No Special Action')
 WHEN  ('?CancelButton') ('No Special Action')
 WHEN  ('?Change') ('No Special Action')
 WHEN  ('?Delete') ('No Special Action')
@@ -312,7 +313,8 @@ WHEN  ('?Change') (0)
 WHEN  ('?Delete') (0)
 WHEN  ('?Insert') (0)
 
-%ButtonThreadStack DEPEND %Control DEFAULT TIMES 5
+%ButtonThreadStack DEPEND %Control DEFAULT TIMES 6
+WHEN  ('') ('25000')
 WHEN  ('?CancelButton') ('25000')
 WHEN  ('?Change') ('25000')
 WHEN  ('?Delete') ('25000')
@@ -334,7 +336,8 @@ WHEN  ('?Change') (0)
 WHEN  ('?Delete') (0)
 WHEN  ('?Insert') (0)
 
-%ButtonRequest DEPEND %Control DEFAULT TIMES 5
+%ButtonRequest DEPEND %Control DEFAULT TIMES 6
+WHEN  ('') ('None')
 WHEN  ('?CancelButton') ('None')
 WHEN  ('?Change') ('None')
 WHEN  ('?Delete') ('None')
@@ -367,7 +370,8 @@ WHEN  ('?Insert') ()
 
 %PostLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
 
-%PostLookupDuringValidate DEPEND %Control LONG TIMES 8
+%PostLookupDuringValidate DEPEND %Control LONG TIMES 9
+WHEN  ('') (1)
 WHEN  ('?CancelButton') (1)
 WHEN  ('?Change') (1)
 WHEN  ('?Delete') (1)
@@ -395,7 +399,8 @@ WHEN  ('?loc:Buscar') (1)
 
 %CheckedControl DEPEND %CheckedHides DEFAULT TIMES 0
 
-%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 5
+%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 6
+WHEN  ('')TIMES 0
 WHEN  ('?CancelButton')TIMES 0
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
@@ -406,7 +411,8 @@ WHEN  ('?List')TIMES 0
 
 %CheckedControl1 DEPEND %CheckedEnables DEFAULT TIMES 0
 
-%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 5
+%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 6
+WHEN  ('')TIMES 0
 WHEN  ('?CancelButton')TIMES 0
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
@@ -423,7 +429,8 @@ WHEN  ('?List')TIMES 0
 
 %UnCheckedControl DEPEND %UnCheckedHides DEFAULT TIMES 0
 
-%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 5
+%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 6
+WHEN  ('')TIMES 0
 WHEN  ('?CancelButton')TIMES 0
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
@@ -434,7 +441,8 @@ WHEN  ('?List')TIMES 0
 
 %UnCheckedControl1 DEPEND %UnCheckedEnables DEFAULT TIMES 0
 
-%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 5
+%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 6
+WHEN  ('')TIMES 0
 WHEN  ('?CancelButton')TIMES 0
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
@@ -445,7 +453,8 @@ WHEN  ('?List')TIMES 0
 
 %ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
 
-%ExtUITabStyle DEPEND %Control DEFAULT TIMES 4
+%ExtUITabStyle DEPEND %Control DEFAULT TIMES 5
+WHEN  ('') ('Default')
 WHEN  ('?Change') ('Default')
 WHEN  ('?Delete') ('Default')
 WHEN  ('?Insert') ('Default')
@@ -455,7 +464,8 @@ WHEN  ('?List') ('Default')
 
 %CheckedDisableControl DEPEND %CheckedDisables DEFAULT TIMES 0
 
-%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 4
+%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 5
+WHEN  ('')TIMES 0
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -465,32 +475,37 @@ WHEN  ('?List')TIMES 0
 
 %UnCheckedDisableControl DEPEND %UnCheckedDisables DEFAULT TIMES 0
 
-%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 4
+%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 5
+WHEN  ('')TIMES 0
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
 WHEN  ('?List')TIMES 0
 
 %ProcedureOneInstance LONG  (0)
-%FieldGradientColorType DEPEND %Control DEFAULT TIMES 4
+%FieldGradientColorType DEPEND %Control DEFAULT TIMES 5
+WHEN  ('') ('Off')
 WHEN  ('?Change') ('Off')
 WHEN  ('?Delete') ('Off')
 WHEN  ('?Insert') ('Off')
 WHEN  ('?List') ('Off')
 
-%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 4
+%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 5
+WHEN  ('') ('')
 WHEN  ('?Change') ('')
 WHEN  ('?Delete') ('')
 WHEN  ('?Insert') ('')
 WHEN  ('?List') ('')
 
-%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 4
+%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 5
+WHEN  ('') (0)
 WHEN  ('?Change') (0)
 WHEN  ('?Delete') (0)
 WHEN  ('?Insert') (0)
 WHEN  ('?List') (0)
 
-%FieldGradientColorFrom DEPEND %Control LONG TIMES 4
+%FieldGradientColorFrom DEPEND %Control LONG TIMES 5
+WHEN  ('') (-1)
 WHEN  ('?Change') (-1)
 WHEN  ('?Delete') (-1)
 WHEN  ('?Insert') (-1)
@@ -498,13 +513,15 @@ WHEN  ('?List') (-1)
 
 %FieldGradientColorFromVariable DEPEND %Control DEFAULT TIMES 0
 
-%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 4
+%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 5
+WHEN  ('') (0)
 WHEN  ('?Change') (0)
 WHEN  ('?Delete') (0)
 WHEN  ('?Insert') (0)
 WHEN  ('?List') (0)
 
-%FieldGradientColorTo DEPEND %Control LONG TIMES 4
+%FieldGradientColorTo DEPEND %Control LONG TIMES 5
+WHEN  ('') (-1)
 WHEN  ('?Change') (-1)
 WHEN  ('?Delete') (-1)
 WHEN  ('?Insert') (-1)
@@ -512,7 +529,8 @@ WHEN  ('?List') (-1)
 
 %FieldGradientColorToVariable DEPEND %Control DEFAULT TIMES 0
 
-%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 4
+%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 5
+WHEN  ('') (0)
 WHEN  ('?Change') (0)
 WHEN  ('?Delete') (0)
 WHEN  ('?Insert') (0)
@@ -523,19 +541,22 @@ WHEN  ('?List') (0)
 
 %ActiveImageEnable DEPEND %Control LONG TIMES 0
 
-%AIObjectName DEPEND %Control DEFAULT TIMES 4
+%AIObjectName DEPEND %Control DEFAULT TIMES 5
+WHEN  ('') ('AIBtn0')
 WHEN  ('?Change') ('AIBtn4')
 WHEN  ('?Delete') ('AIBtn5')
 WHEN  ('?Insert') ('AIBtn3')
 WHEN  ('?List') ('AIBtn2')
 
-%AIEnableMimicControl DEPEND %Control LONG TIMES 4
+%AIEnableMimicControl DEPEND %Control LONG TIMES 5
+WHEN  ('') (1)
 WHEN  ('?Change') (1)
 WHEN  ('?Delete') (1)
 WHEN  ('?Insert') (1)
 WHEN  ('?List') (1)
 
-%AIMimicControl DEPEND %Control DEFAULT TIMES 4
+%AIMimicControl DEPEND %Control DEFAULT TIMES 5
+WHEN  ('') ('?CancelButton')
 WHEN  ('?Change') ('?CancelButton')
 WHEN  ('?Delete') ('?CancelButton')
 WHEN  ('?Insert') ('?CancelButton')
@@ -547,7 +568,8 @@ WHEN  ('?List') ('?CancelButton')
 
 %AIOverrideImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 4
+%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 5
+WHEN  ('') (0)
 WHEN  ('?Change') (0)
 WHEN  ('?Delete') (0)
 WHEN  ('?Insert') (0)
@@ -557,7 +579,8 @@ WHEN  ('?List') (0)
 
 %AIDisableImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIDisableImgIsVariable DEPEND %Control LONG TIMES 4
+%AIDisableImgIsVariable DEPEND %Control LONG TIMES 5
+WHEN  ('') (0)
 WHEN  ('?Change') (0)
 WHEN  ('?Delete') (0)
 WHEN  ('?Insert') (0)
@@ -567,7 +590,8 @@ WHEN  ('?List') (0)
 
 %AIHotImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIHotImgIsVariable DEPEND %Control LONG TIMES 4
+%AIHotImgIsVariable DEPEND %Control LONG TIMES 5
+WHEN  ('') (0)
 WHEN  ('?Change') (0)
 WHEN  ('?Delete') (0)
 WHEN  ('?Insert') (0)
@@ -577,7 +601,8 @@ WHEN  ('?List') (0)
 
 %AIPressedImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIPressedImgIsVariable DEPEND %Control LONG TIMES 4
+%AIPressedImgIsVariable DEPEND %Control LONG TIMES 5
+WHEN  ('') (0)
 WHEN  ('?Change') (0)
 WHEN  ('?Delete') (0)
 WHEN  ('?Insert') (0)
@@ -1027,7 +1052,9 @@ WHEN  (2) (1)
 WHEN  (3) (1)
 
 %UseSameColorForAll LONG  (0)
-%ControlGreenBarColor DEPEND %Control DEPEND %ControlField LONG TIMES 2
+%ControlGreenBarColor DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (0)
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 8
 WHEN  ('PCT:DISABLE') (0)
@@ -1039,7 +1066,9 @@ WHEN  ('PCT:READONLY') (0)
 WHEN  ('PCT:REQUIRED') (0)
 WHEN  ('PCT:TEXT') (0)
 
-%ControlFieldForegroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 2
+%ControlFieldForegroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (-1)
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 8
 WHEN  ('PCT:DISABLE') (-1)
@@ -1051,7 +1080,9 @@ WHEN  ('PCT:READONLY') (-1)
 WHEN  ('PCT:REQUIRED') (-1)
 WHEN  ('PCT:TEXT') (-1)
 
-%ControlFieldBackgroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 2
+%ControlFieldBackgroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (-1)
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 8
 WHEN  ('PCT:DISABLE') (-1)
@@ -1063,7 +1094,9 @@ WHEN  ('PCT:READONLY') (-1)
 WHEN  ('PCT:REQUIRED') (-1)
 WHEN  ('PCT:TEXT') (-1)
 
-%ControlFieldForegroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 2
+%ControlFieldForegroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (-1)
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 8
 WHEN  ('PCT:DISABLE') (-1)
@@ -1075,7 +1108,9 @@ WHEN  ('PCT:READONLY') (-1)
 WHEN  ('PCT:REQUIRED') (-1)
 WHEN  ('PCT:TEXT') (-1)
 
-%ControlFieldBackgroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 2
+%ControlFieldBackgroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (-1)
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 8
 WHEN  ('PCT:DISABLE') (-1)
@@ -1096,31 +1131,41 @@ WHEN  ('?List')TIMES 1
 WHEN  ('PCT:NOMBRE_FEQ')TIMES 1
 WHEN  (1) ('PCT:COLUMNA=0')
 
-%ConditionalControlFieldForegroundNormal DEPEND %ConditionalColors LONG TIMES 2
+%ConditionalControlFieldForegroundNormal DEPEND %ConditionalColors LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 1
 WHEN  ('PCT:NOMBRE_FEQ')TIMES 1
 WHEN  (1) (16711680)
 
-%ConditionalControlFieldBackgroundNormal DEPEND %ConditionalColors LONG TIMES 2
+%ConditionalControlFieldBackgroundNormal DEPEND %ConditionalColors LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 1
 WHEN  ('PCT:NOMBRE_FEQ')TIMES 1
 WHEN  (1) (-1)
 
-%ConditionalControlFieldForegroundSelected DEPEND %ConditionalColors LONG TIMES 2
+%ConditionalControlFieldForegroundSelected DEPEND %ConditionalColors LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 1
 WHEN  ('PCT:NOMBRE_FEQ')TIMES 1
 WHEN  (1) (16776960)
 
-%ConditionalControlFieldBackgroundSelected DEPEND %ConditionalColors LONG TIMES 2
+%ConditionalControlFieldBackgroundSelected DEPEND %ConditionalColors LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 1
 WHEN  ('PCT:NOMBRE_FEQ')TIMES 1
 WHEN  (1) (-1)
 
-%GreenBarOnForegroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 2
+%GreenBarOnForegroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (-1)
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 8
 WHEN  ('PCT:DISABLE') (-1)
@@ -1132,7 +1177,9 @@ WHEN  ('PCT:READONLY') (-1)
 WHEN  ('PCT:REQUIRED') (-1)
 WHEN  ('PCT:TEXT') (-1)
 
-%GreenBarOnBackgroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 2
+%GreenBarOnBackgroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (-1)
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 8
 WHEN  ('PCT:DISABLE') (-1)
@@ -1144,7 +1191,9 @@ WHEN  ('PCT:READONLY') (-1)
 WHEN  ('PCT:REQUIRED') (-1)
 WHEN  ('PCT:TEXT') (-1)
 
-%GreenBarOnForegroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 2
+%GreenBarOnForegroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (-1)
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 8
 WHEN  ('PCT:DISABLE') (-1)
@@ -1156,7 +1205,9 @@ WHEN  ('PCT:READONLY') (-1)
 WHEN  ('PCT:REQUIRED') (-1)
 WHEN  ('PCT:TEXT') (-1)
 
-%GreenBarOnBackgroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 2
+%GreenBarOnBackgroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (-1)
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 8
 WHEN  ('PCT:DISABLE') (-1)
@@ -1168,7 +1219,9 @@ WHEN  ('PCT:READONLY') (-1)
 WHEN  ('PCT:REQUIRED') (-1)
 WHEN  ('PCT:TEXT') (-1)
 
-%GreenBarOffForegroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 2
+%GreenBarOffForegroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (-1)
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 8
 WHEN  ('PCT:DISABLE') (-1)
@@ -1180,7 +1233,9 @@ WHEN  ('PCT:READONLY') (-1)
 WHEN  ('PCT:REQUIRED') (-1)
 WHEN  ('PCT:TEXT') (-1)
 
-%GreenBarOffBackgroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 2
+%GreenBarOffBackgroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (-1)
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 8
 WHEN  ('PCT:DISABLE') (-1)
@@ -1192,7 +1247,9 @@ WHEN  ('PCT:READONLY') (-1)
 WHEN  ('PCT:REQUIRED') (-1)
 WHEN  ('PCT:TEXT') (-1)
 
-%GreenBarOffForegroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 2
+%GreenBarOffForegroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (-1)
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 8
 WHEN  ('PCT:DISABLE') (-1)
@@ -1204,7 +1261,9 @@ WHEN  ('PCT:READONLY') (-1)
 WHEN  ('PCT:REQUIRED') (-1)
 WHEN  ('PCT:TEXT') (-1)
 
-%GreenBarOffBackgroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 2
+%GreenBarOffBackgroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (-1)
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 8
 WHEN  ('PCT:DISABLE') (-1)
@@ -1293,7 +1352,9 @@ WHEN  ('PCT:REQUIRED')TIMES 1
 WHEN  (1) (0)
 
 %UseSameStyleForAll LONG  (0)
-%ControlGreenBarStyle DEPEND %Control DEPEND %ControlField LONG TIMES 2
+%ControlGreenBarStyle DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (0)
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 8
 WHEN  ('PCT:DISABLE') (0)
@@ -1305,7 +1366,9 @@ WHEN  ('PCT:READONLY') (0)
 WHEN  ('PCT:REQUIRED') (0)
 WHEN  ('PCT:TEXT') (0)
 
-%GreenBarOnStyleType DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
+%GreenBarOnStyleType DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') ('Local List')
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 8
 WHEN  ('PCT:DISABLE') ('Local List')
@@ -1317,7 +1380,9 @@ WHEN  ('PCT:READONLY') ('Local List')
 WHEN  ('PCT:REQUIRED') ('Local List')
 WHEN  ('PCT:TEXT') ('Local List')
 
-%GreenBarOnStyleLocalList DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
+%GreenBarOnStyleLocalList DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') ('')
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 8
 WHEN  ('PCT:DISABLE') ('')
@@ -1331,7 +1396,9 @@ WHEN  ('PCT:TEXT') ('')
 
 %GreenBarOnStyle DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
 
-%GreenBarOffStyleType DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
+%GreenBarOffStyleType DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') ('Local List')
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 8
 WHEN  ('PCT:DISABLE') ('Local List')
@@ -1343,7 +1410,9 @@ WHEN  ('PCT:READONLY') ('Local List')
 WHEN  ('PCT:REQUIRED') ('Local List')
 WHEN  ('PCT:TEXT') ('Local List')
 
-%GreenBarOffStyleLocalList DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
+%GreenBarOffStyleLocalList DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') ('')
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 8
 WHEN  ('PCT:DISABLE') ('')
@@ -1357,7 +1426,9 @@ WHEN  ('PCT:TEXT') ('')
 
 %GreenBarOffStyle DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
 
-%ControlFieldStyleType DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
+%ControlFieldStyleType DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') ('Local List')
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 8
 WHEN  ('PCT:DISABLE') ('Local List')
@@ -1369,7 +1440,9 @@ WHEN  ('PCT:READONLY') ('Local List')
 WHEN  ('PCT:REQUIRED') ('Local List')
 WHEN  ('PCT:TEXT') ('Local List')
 
-%ControlFieldStyleLocalList DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
+%ControlFieldStyleLocalList DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') ('')
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 8
 WHEN  ('PCT:DISABLE') ('')
@@ -1387,11 +1460,15 @@ WHEN  ('PCT:TEXT') ('')
 
 %StyleCondition DEPEND %ConditionalStyles DEFAULT TIMES 0
 
-%ConditionalControlFieldStyleType DEPEND %ConditionalStyles DEFAULT TIMES 2
+%ConditionalControlFieldStyleType DEPEND %ConditionalStyles DEFAULT TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 0
 
-%ConditionalControlFieldStyleLocalList DEPEND %ConditionalStyles DEFAULT TIMES 2
+%ConditionalControlFieldStyleLocalList DEPEND %ConditionalStyles DEFAULT TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 0
 
@@ -1437,7 +1514,9 @@ WHEN  ('?List')TIMES 0
 %EnableSortHeader LONG  (1)
 %ControlFieldSortHeaderSave LONG  (0)
 %ControlFieldSortHeaderMulti LONG  (1)
-%ControlFieldSortHeaderOnlyAsc DEPEND %Control DEPEND %ControlField LONG TIMES 2
+%ControlFieldSortHeaderOnlyAsc DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (0)
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 8
 WHEN  ('PCT:DISABLE') (0)
@@ -1449,7 +1528,9 @@ WHEN  ('PCT:READONLY') (0)
 WHEN  ('PCT:REQUIRED') (0)
 WHEN  ('PCT:TEXT') (0)
 
-%ControlFieldSortHeaderOverride DEPEND %Control DEPEND %ControlField LONG TIMES 2
+%ControlFieldSortHeaderOverride DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (0)
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 8
 WHEN  ('PCT:DISABLE') (0)
@@ -1461,7 +1542,9 @@ WHEN  ('PCT:READONLY') (0)
 WHEN  ('PCT:REQUIRED') (0)
 WHEN  ('PCT:TEXT') (0)
 
-%ControlFieldSortHeaderDisableColumn DEPEND %Control DEPEND %ControlField LONG TIMES 2
+%ControlFieldSortHeaderDisableColumn DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (0)
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 8
 WHEN  ('PCT:DISABLE') (0)
@@ -1477,11 +1560,15 @@ WHEN  ('PCT:TEXT') (0)
 
 %ControlFieldSortHeaderField DEPEND %ControlFieldSortHeaderFields FIELD TIMES 0
 
-%ControlFieldSortHeaderFieldOrder DEPEND %ControlFieldSortHeaderFields DEFAULT TIMES 2
+%ControlFieldSortHeaderFieldOrder DEPEND %ControlFieldSortHeaderFields DEFAULT TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 0
 
-%ControlFieldSortHeaderFieldCase DEPEND %ControlFieldSortHeaderFields LONG TIMES 2
+%ControlFieldSortHeaderFieldCase DEPEND %ControlFieldSortHeaderFields LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 0
 
@@ -1684,7 +1771,9 @@ WHEN  ('BrowseEIPManager')TIMES 0
 
 %PrimedValue DEPEND %PrimingFields DEFAULT TIMES 0
 
-%AllowEIPExt DEPEND %Control DEPEND %ControlField LONG TIMES 4
+%AllowEIPExt DEPEND %Control DEPEND %ControlField LONG TIMES 5
+WHEN  ('')TIMES 1
+WHEN  ('') (1)
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -1698,7 +1787,9 @@ WHEN  ('PCT:READONLY') (1)
 WHEN  ('PCT:REQUIRED') (1)
 WHEN  ('PCT:TEXT') (1)
 
-%EditInPlaceTypeExt DEPEND %Control DEPEND %ControlField DEFAULT TIMES 4
+%EditInPlaceTypeExt DEPEND %Control DEPEND %ControlField DEFAULT TIMES 5
+WHEN  ('')TIMES 1
+WHEN  ('') ('Entry')
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -1714,7 +1805,9 @@ WHEN  ('PCT:TEXT') ('Entry')
 
 %EditInPlaceFEQTitle DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
 
-%EditInPlaceFEQJust DEPEND %Control DEPEND %ControlField DEFAULT TIMES 4
+%EditInPlaceFEQJust DEPEND %Control DEPEND %ControlField DEFAULT TIMES 5
+WHEN  ('')TIMES 1
+WHEN  ('') ('Default')
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -1728,7 +1821,9 @@ WHEN  ('PCT:READONLY') ('Default')
 WHEN  ('PCT:REQUIRED') ('Default')
 WHEN  ('PCT:TEXT') ('Default')
 
-%EditInPlaceFEQOffset DEPEND %Control DEPEND %ControlField DEFAULT TIMES 4
+%EditInPlaceFEQOffset DEPEND %Control DEPEND %ControlField DEFAULT TIMES 5
+WHEN  ('')TIMES 1
+WHEN  ('') ('0')
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -1742,7 +1837,9 @@ WHEN  ('PCT:READONLY') ('0')
 WHEN  ('PCT:REQUIRED') ('0')
 WHEN  ('PCT:TEXT') ('0')
 
-%EditInPlaceFEQTransparent DEPEND %Control DEPEND %ControlField LONG TIMES 4
+%EditInPlaceFEQTransparent DEPEND %Control DEPEND %ControlField LONG TIMES 5
+WHEN  ('')TIMES 1
+WHEN  ('') (0)
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -1756,7 +1853,9 @@ WHEN  ('PCT:READONLY') (1)
 WHEN  ('PCT:REQUIRED') (0)
 WHEN  ('PCT:TEXT') (0)
 
-%EditInPlaceFEQReadOnly DEPEND %Control DEPEND %ControlField LONG TIMES 4
+%EditInPlaceFEQReadOnly DEPEND %Control DEPEND %ControlField LONG TIMES 5
+WHEN  ('')TIMES 1
+WHEN  ('') (0)
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -1770,7 +1869,9 @@ WHEN  ('PCT:READONLY') (1)
 WHEN  ('PCT:REQUIRED') (1)
 WHEN  ('PCT:TEXT') (0)
 
-%EditInPlaceFEQRequired DEPEND %Control DEPEND %ControlField LONG TIMES 4
+%EditInPlaceFEQRequired DEPEND %Control DEPEND %ControlField LONG TIMES 5
+WHEN  ('')TIMES 1
+WHEN  ('') (0)
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -1784,7 +1885,9 @@ WHEN  ('PCT:READONLY') (0)
 WHEN  ('PCT:REQUIRED') (0)
 WHEN  ('PCT:TEXT') (0)
 
-%EditInPlaceFEQDataSource DEPEND %Control DEPEND %ControlField DEFAULT TIMES 4
+%EditInPlaceFEQDataSource DEPEND %Control DEPEND %ControlField DEFAULT TIMES 5
+WHEN  ('')TIMES 1
+WHEN  ('') ('Fixed')
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -1802,7 +1905,9 @@ WHEN  ('PCT:TEXT') ('Fixed')
 
 %EditInPlaceFEQFixedDataSourceValue DEPEND %EditInPlaceFEQFixedDataSource DEFAULT TIMES 0
 
-%EditInPlaceFEQFixedDataSourceSelected DEPEND %EditInPlaceFEQFixedDataSource LONG TIMES 3
+%EditInPlaceFEQFixedDataSourceSelected DEPEND %EditInPlaceFEQFixedDataSource LONG TIMES 4
+WHEN  ('')TIMES 1
+WHEN  ('')TIMES 0
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -1813,7 +1918,9 @@ WHEN  ('?Insert')TIMES 0
 
 %EditInPlaceFEQQueueDataSourceS DEPEND %Control DEPEND %ControlField FIELD TIMES 0
 
-%EditInPlaceFEQAutoSerializeField DEPEND %Control DEPEND %ControlField LONG TIMES 4
+%EditInPlaceFEQAutoSerializeField DEPEND %Control DEPEND %ControlField LONG TIMES 5
+WHEN  ('')TIMES 1
+WHEN  ('') (0)
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -1831,7 +1938,9 @@ WHEN  ('PCT:TEXT') (0)
 
 %ReturnToOriginalDir DEPEND %Control DEPEND %ControlField LONG TIMES 0
 
-%AllowLongFilenames DEPEND %Control DEPEND %ControlField LONG TIMES 4
+%AllowLongFilenames DEPEND %Control DEPEND %ControlField LONG TIMES 5
+WHEN  ('')TIMES 1
+WHEN  ('') (1)
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -1845,7 +1954,9 @@ WHEN  ('PCT:READONLY') (1)
 WHEN  ('PCT:REQUIRED') (1)
 WHEN  ('PCT:TEXT') (1)
 
-%DOSFileDialogType DEPEND %Control DEPEND %ControlField DEFAULT TIMES 4
+%DOSFileDialogType DEPEND %Control DEPEND %ControlField DEFAULT TIMES 5
+WHEN  ('')TIMES 1
+WHEN  ('') ('Open')
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -1859,7 +1970,9 @@ WHEN  ('PCT:READONLY') ('Open')
 WHEN  ('PCT:REQUIRED') ('Open')
 WHEN  ('PCT:TEXT') ('Open')
 
-%AllowNoError DEPEND %Control DEPEND %ControlField LONG TIMES 4
+%AllowNoError DEPEND %Control DEPEND %ControlField LONG TIMES 5
+WHEN  ('')TIMES 1
+WHEN  ('') (0)
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -1875,7 +1988,9 @@ WHEN  ('PCT:TEXT') (0)
 
 %AllowMultiSelect DEPEND %Control DEPEND %ControlField LONG TIMES 0
 
-%DOSMaskDesc DEPEND %Control DEPEND %ControlField DEFAULT TIMES 4
+%DOSMaskDesc DEPEND %Control DEPEND %ControlField DEFAULT TIMES 5
+WHEN  ('')TIMES 1
+WHEN  ('') ('All Files')
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -1889,7 +2004,9 @@ WHEN  ('PCT:READONLY') ('All Files')
 WHEN  ('PCT:REQUIRED') ('All Files')
 WHEN  ('PCT:TEXT') ('All Files')
 
-%DOSMask DEPEND %Control DEPEND %ControlField DEFAULT TIMES 4
+%DOSMask DEPEND %Control DEPEND %ControlField DEFAULT TIMES 5
+WHEN  ('')TIMES 1
+WHEN  ('') ('*.*')
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -1909,7 +2026,9 @@ WHEN  ('PCT:TEXT') ('*.*')
 
 %DOSMoreMask DEPEND %DOSMoreMasks DEFAULT TIMES 0
 
-%EditInPlaceFEQForegroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 4
+%EditInPlaceFEQForegroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 5
+WHEN  ('')TIMES 1
+WHEN  ('') (-1)
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -1923,7 +2042,9 @@ WHEN  ('PCT:READONLY') (-1)
 WHEN  ('PCT:REQUIRED') (-1)
 WHEN  ('PCT:TEXT') (-1)
 
-%EditInPlaceFEQBackgroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 4
+%EditInPlaceFEQBackgroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 5
+WHEN  ('')TIMES 1
+WHEN  ('') (-1)
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -1937,7 +2058,9 @@ WHEN  ('PCT:READONLY') (-1)
 WHEN  ('PCT:REQUIRED') (-1)
 WHEN  ('PCT:TEXT') (-1)
 
-%EditInPlaceFEQForegroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 4
+%EditInPlaceFEQForegroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 5
+WHEN  ('')TIMES 1
+WHEN  ('') (-1)
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -1951,7 +2074,9 @@ WHEN  ('PCT:READONLY') (-1)
 WHEN  ('PCT:REQUIRED') (-1)
 WHEN  ('PCT:TEXT') (-1)
 
-%EditInPlaceFEQBackgroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 4
+%EditInPlaceFEQBackgroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 5
+WHEN  ('')TIMES 1
+WHEN  ('') (-1)
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -1973,7 +2098,9 @@ WHEN  ('PCT:TEXT') (-1)
 
 %EditInPlaceFEQListFormat DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
 
-%EditInPlaceFEQDrop DEPEND %Control DEPEND %ControlField DEFAULT TIMES 4
+%EditInPlaceFEQDrop DEPEND %Control DEPEND %ControlField DEFAULT TIMES 5
+WHEN  ('')TIMES 1
+WHEN  ('') ('0')
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -1987,7 +2114,9 @@ WHEN  ('PCT:READONLY') ('0')
 WHEN  ('PCT:REQUIRED') ('0')
 WHEN  ('PCT:TEXT') ('0')
 
-%EditInPlaceFEQWidth DEPEND %Control DEPEND %ControlField DEFAULT TIMES 4
+%EditInPlaceFEQWidth DEPEND %Control DEPEND %ControlField DEFAULT TIMES 5
+WHEN  ('')TIMES 1
+WHEN  ('') ('0')
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -2001,7 +2130,9 @@ WHEN  ('PCT:READONLY') ('0')
 WHEN  ('PCT:REQUIRED') ('0')
 WHEN  ('PCT:TEXT') ('0')
 
-%EditInPlaceFEQCase DEPEND %Control DEPEND %ControlField DEFAULT TIMES 4
+%EditInPlaceFEQCase DEPEND %Control DEPEND %ControlField DEFAULT TIMES 5
+WHEN  ('')TIMES 1
+WHEN  ('') ('Default')
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -2015,7 +2146,9 @@ WHEN  ('PCT:READONLY') ('Default')
 WHEN  ('PCT:REQUIRED') ('Default')
 WHEN  ('PCT:TEXT') ('Default')
 
-%EditInPlaceFEQFlat DEPEND %Control DEPEND %ControlField LONG TIMES 4
+%EditInPlaceFEQFlat DEPEND %Control DEPEND %ControlField LONG TIMES 5
+WHEN  ('')TIMES 1
+WHEN  ('') (0)
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -2029,7 +2162,9 @@ WHEN  ('PCT:READONLY') (0)
 WHEN  ('PCT:REQUIRED') (0)
 WHEN  ('PCT:TEXT') (0)
 
-%EditInPlaceFEQHorizontal DEPEND %Control DEPEND %ControlField LONG TIMES 4
+%EditInPlaceFEQHorizontal DEPEND %Control DEPEND %ControlField LONG TIMES 5
+WHEN  ('')TIMES 1
+WHEN  ('') (0)
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -2043,7 +2178,9 @@ WHEN  ('PCT:READONLY') (0)
 WHEN  ('PCT:REQUIRED') (0)
 WHEN  ('PCT:TEXT') (0)
 
-%EditInPlaceFEQVertical DEPEND %Control DEPEND %ControlField LONG TIMES 4
+%EditInPlaceFEQVertical DEPEND %Control DEPEND %ControlField LONG TIMES 5
+WHEN  ('')TIMES 1
+WHEN  ('') (0)
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -2057,7 +2194,9 @@ WHEN  ('PCT:READONLY') (0)
 WHEN  ('PCT:REQUIRED') (0)
 WHEN  ('PCT:TEXT') (0)
 
-%EditInPlaceFEQImmediate DEPEND %Control DEPEND %ControlField LONG TIMES 4
+%EditInPlaceFEQImmediate DEPEND %Control DEPEND %ControlField LONG TIMES 5
+WHEN  ('')TIMES 1
+WHEN  ('') (0)
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -2071,7 +2210,9 @@ WHEN  ('PCT:READONLY') (0)
 WHEN  ('PCT:REQUIRED') (0)
 WHEN  ('PCT:TEXT') (0)
 
-%EditInPlaceFEQEntryCompletion DEPEND %Control DEPEND %ControlField LONG TIMES 4
+%EditInPlaceFEQEntryCompletion DEPEND %Control DEPEND %ControlField LONG TIMES 5
+WHEN  ('')TIMES 1
+WHEN  ('') (0)
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -2093,7 +2234,9 @@ WHEN  ('PCT:TEXT') (0)
 
 %EditInPlaceFEQFixedDataSourceText DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
 
-%EditInPlaceFEQCheckJust DEPEND %Control DEPEND %ControlField DEFAULT TIMES 4
+%EditInPlaceFEQCheckJust DEPEND %Control DEPEND %ControlField DEFAULT TIMES 5
+WHEN  ('')TIMES 1
+WHEN  ('') ('Default')
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -2115,7 +2258,9 @@ WHEN  ('PCT:TEXT') ('Default')
 
 %EditInPlaceFEQFalseLabel DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
 
-%EditInPlaceFEQEntryMode DEPEND %Control DEPEND %ControlField DEFAULT TIMES 4
+%EditInPlaceFEQEntryMode DEPEND %Control DEPEND %ControlField DEFAULT TIMES 5
+WHEN  ('')TIMES 1
+WHEN  ('') ('Default')
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -2129,7 +2274,9 @@ WHEN  ('PCT:READONLY') ('Default')
 WHEN  ('PCT:REQUIRED') ('Default')
 WHEN  ('PCT:TEXT') ('Default')
 
-%EditInPlaceFEQLower DEPEND %Control DEPEND %ControlField DEFAULT TIMES 4
+%EditInPlaceFEQLower DEPEND %Control DEPEND %ControlField DEFAULT TIMES 5
+WHEN  ('')TIMES 1
+WHEN  ('') ('0')
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -2143,7 +2290,9 @@ WHEN  ('PCT:READONLY') ('0')
 WHEN  ('PCT:REQUIRED') ('0')
 WHEN  ('PCT:TEXT') ('0')
 
-%EditInPlaceFEQUpper DEPEND %Control DEPEND %ControlField DEFAULT TIMES 4
+%EditInPlaceFEQUpper DEPEND %Control DEPEND %ControlField DEFAULT TIMES 5
+WHEN  ('')TIMES 1
+WHEN  ('') ('0')
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -2157,7 +2306,9 @@ WHEN  ('PCT:READONLY') ('0')
 WHEN  ('PCT:REQUIRED') ('0')
 WHEN  ('PCT:TEXT') ('0')
 
-%EditInPlaceFEQStep DEPEND %Control DEPEND %ControlField DEFAULT TIMES 4
+%EditInPlaceFEQStep DEPEND %Control DEPEND %ControlField DEFAULT TIMES 5
+WHEN  ('')TIMES 1
+WHEN  ('') ('0')
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -2171,7 +2322,9 @@ WHEN  ('PCT:READONLY') ('0')
 WHEN  ('PCT:REQUIRED') ('0')
 WHEN  ('PCT:TEXT') ('0')
 
-%EditInPlaceFEQPassword DEPEND %Control DEPEND %ControlField LONG TIMES 4
+%EditInPlaceFEQPassword DEPEND %Control DEPEND %ControlField LONG TIMES 5
+WHEN  ('')TIMES 1
+WHEN  ('') (0)
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -2185,7 +2338,9 @@ WHEN  ('PCT:READONLY') (0)
 WHEN  ('PCT:REQUIRED') (0)
 WHEN  ('PCT:TEXT') (0)
 
-%LookupType DEPEND %Control DEPEND %ControlField DEFAULT TIMES 4
+%LookupType DEPEND %Control DEPEND %ControlField DEFAULT TIMES 5
+WHEN  ('')TIMES 1
+WHEN  ('') ('Related Field')
 WHEN  ('?Change')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?Insert')TIMES 0
@@ -2277,7 +2432,7 @@ NOEXPORT
 [COMMON]
 DESCRIPTION 'string pProcedure,string pNombreFeq,long pType,long pFeq,string pText,long pDisable,long pHide,string pUse,long pReq,long pReadOnly'
 FROM ABC Window
-MODIFIED '2021/08/27' ' 9:54:12'
+MODIFIED '2021/08/30' '12:22:17'
 [DATA]
 [SCREENCONTROLS]
 ! PROMPT('valor:'),USE(?valor:Prompt)
@@ -2751,7 +2906,7 @@ PROPERTY:END
 PROPERTY:BEGIN
 PRIORITY 9003
 PROPERTY:END
-if pType=create:Entry or pType=create:Text
+if pType=create:Entry or pType=create:Text or pType=create:list
     enable(?GROUPentry)
     ?Prompt:Text{PROP:Text} = 'Formato:'
 ELSE
@@ -2759,7 +2914,8 @@ ELSE
     ?Prompt:Text{PROP:Text} = 'Etiqueta:'
 END
 if pType=CREATE:list
-    disable(?PCT:TEXT)
+    ?PCT:PRIME:Prompt{PROP:Text} = 'Iniciar en Nr:'
+    ?PCT:PRIME{PROP:Text}        = '@N3'
 END
 
 
@@ -2870,19 +3026,19 @@ Window  WINDOW('Propiedades de Campos'),AT(,,245,183),FONT('MS Sans Serif',8,,FO
           END
           STRING(@s100),AT(16,32,163),USE(PCT:NOMBRE_FEQ),FONT('Microsoft Sans Serif',,,FONT:bold), |
             #ORDINAL(4)
-          GROUP,AT(11,46,177,64),USE(?GROUPetiqueta),TRN,#ORDINAL(6)
-            PROMPT('Etiqueta:'),AT(16,56),USE(?Prompt:Text),#ORDINAL(7)
-            ENTRY(@s255),AT(71,55,107,10),USE(PCT:TEXT),#ORDINAL(8)
-            CHECK('Deshabilitar (Grisar)'),AT(70,78),USE(PCT:DISABLE),TRN,#ORDINAL(9)
-            CHECK('Ocultar'),AT(70,98,41,10),USE(PCT:HIDE),#ORDINAL(10)
+          GROUP,AT(11,46,177,64),USE(?GROUPetiqueta),TRN,#ORDINAL(5)
+            PROMPT('Etiqueta:'),AT(16,56),USE(?Prompt:Text),#ORDINAL(6)
+            ENTRY(@s255),AT(71,55,107,10),USE(PCT:TEXT),#ORDINAL(7)
+            CHECK('Deshabilitar (Grisar)'),AT(70,78),USE(PCT:DISABLE),TRN,#ORDINAL(8)
+            CHECK('Ocultar'),AT(70,98,41,10),USE(PCT:HIDE),#ORDINAL(9)
           END
-          GROUP,AT(11,113,177,68),USE(?GROUPentry),TRN,#ORDINAL(11)
-            PROMPT('Valor inicial:'),AT(16,122),USE(?PCT:PRIME:Prompt),#ORDINAL(12)
-            ENTRY(@s255),AT(71,122,107,10),USE(PCT:PRIME),#ORDINAL(13)
-            CHECK('Requerido (Obligatorio)'),AT(70,143,109,10),USE(PCT:REQUIRED),#ORDINAL(14)
-            CHECK('Solo Lectura'),AT(70,163,109,10),USE(PCT:READONLY),#ORDINAL(15)
+          GROUP,AT(11,113,177,68),USE(?GROUPentry),TRN,#ORDINAL(10)
+            PROMPT('Valor inicial:'),AT(16,122),USE(?PCT:PRIME:Prompt),#ORDINAL(11)
+            ENTRY(@s255),AT(71,122,107,10),USE(PCT:PRIME),#ORDINAL(12)
+            CHECK('Requerido (Obligatorio)'),AT(70,143,109,10),USE(PCT:REQUIRED),#ORDINAL(13)
+            CHECK('Solo Lectura'),AT(70,163,109,10),USE(PCT:READONLY),#ORDINAL(14)
           END
-          BUTTON('&Grabar'),AT(192,143,46,14),USE(?Ok:2),LEFT,#ORDINAL(16)
-          BUTTON('&Cerrar'),AT(192,167,46,14),USE(?Close),LEFT,STD(STD:Close),#ORDINAL(17)
+          BUTTON('&Grabar'),AT(192,143,46,14),USE(?Ok:2),LEFT,#ORDINAL(15)
+          BUTTON('&Cerrar'),AT(192,167,46,14),USE(?Close),LEFT,STD(STD:Close),#ORDINAL(16)
         END
 
